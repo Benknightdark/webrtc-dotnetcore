@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -79,7 +77,8 @@ namespace webrtc_dotnetcore.Hubs
                            Name = room.Name,
                            Button = "<button class=\"joinButton\">Join!</button>"
                        };
-            var data = JsonConvert.SerializeObject(list);
+            // var data = JsonConvert.SerializeObject(list);
+            var data = System.Text.Json.JsonSerializer.Serialize(list);
 
             if (notifyOnlyCaller)
             {
